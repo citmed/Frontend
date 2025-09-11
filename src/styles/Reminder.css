@@ -1,0 +1,463 @@
+/* Reminder.css - VERSIÓN CON MENÚ HAMBURGUESA SUPERIOR DERECHO */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  text-align: center;
+  padding-top: 70px; /* Espacio para la navegación superior */
+}
+
+/* Navegación superior fija */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7f86d4 !important;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.top-nav h1 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.nav-buttons-group {
+  display: flex;
+  gap: 10px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: gray;
+  padding: 20px;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 30px; /* distancia desde la parte inferior */
+  left: 50%;    /* lo centra horizontalmente */
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra las opciones también */
+  z-index: 1000;
+}
+
+.fab-main {
+  background-color: #5c7cfa;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 32px; /* puedes ajustar el tamaño */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  /*Elimina el espacio raro por fuente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*Elimina el espacio raro por fuente */
+  line-height: 1;
+  padding: 0;
+}
+
+.fab-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.fab-option {
+  background-color: #5c7cfa;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estos son los colores al pasar el mouse sobre el botón */
+.fab-option:hover,
+.fab-option:focus,
+.fab-option:active {
+  background-color: #002fe9 !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.fab-main:hover,
+.fab-main:focus,
+.fab-main:active {
+  background-color: #002fe9 !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #5a67d8;
+  transform: scale(1.05);
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+}
+
+.nav-button:focus {
+  outline: none; /* Evita el borde verde al hacer clic */
+  box-shadow: none; /* Elimina el resplandor en algunos navegadores */
+}
+
+.nav-button.active {
+  background-color: #5a67d8;
+}
+
+.delete-button {
+  background: red;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background: darkred;
+}
+
+/* Contenido de la tarjeta */
+.reminder-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 20px;
+  list-style: none;
+}
+
+.reminder-item {
+  background: #fdfdfd; /* Fondo claro */
+  border-radius: 18px;
+  min-width: 260px;
+  max-width: 300px;
+  flex: 1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Hover suave */
+.reminder-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Header más calmado */
+.reminder-header {
+  background: #7f86d4; /* morado muy suave */
+  padding: 14px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff; /* Azul oscuro para contraste */
+  text-align: center;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #d0ddf5;
+}
+
+/* Línea decorativa opcional */
+.reminder-header::after {
+  content: "";
+  display: block;
+  margin: 6px auto 0;
+  width: 40px;
+  height: 3px;
+  background: #9bbcff;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.reminder-item:hover .reminder-header::after {
+  width: 70px;
+}
+
+/* Contenido */
+.reminder-info {
+  padding: 18px;
+  text-align: center;
+  color: #333;
+  font-size: 1rem;
+}
+
+.reminder-info p {
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Texto pequeño */
+.reminder-info small {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: left;
+  margin-bottom: 6px;
+}
+
+/* Botón eliminar */
+.delete-button {
+  align-self: flex-end;
+  margin: 12px;
+  background: #ff7070;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.delete-button:hover {
+  background: #e85a5a;
+  transform: scale(1.1);
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  font-size: 1.2rem;
+  margin: 40px 0;
+}
+
+.horario-item {
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+/* Botón de menú hamburguesa para móviles (oculto en desktop) */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+/* Overlay para menú móvil */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .container {
+    padding-top: 60px;
+  }
+  
+  .top-nav {
+    padding: 0.8rem;
+    height: 60px;
+  }
+  
+  .top-nav h1 {
+    font-size: 1.3rem;
+  }
+  
+  .nav-button {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+  
+  .nav-button span {
+    display: none; /* Ocultar texto en móviles */
+  }
+  
+  .main-content {
+    padding: 15px;
+  }
+  
+  .reminder-list {
+    justify-content: center;
+  }
+  
+  .reminder-item {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  
+  .fab-container {
+    bottom: 20px;
+  }
+  
+  /* Mostrar botón de menú hamburguesa en móviles */
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  /* Ocultar menú de navegación por defecto en móviles */
+  .nav-buttons-group {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    flex-direction: column;
+    background-color: #7f86d4;
+    width: 200px;
+    height: auto;
+    transition: right 0.3s ease;
+    padding: 15px;
+    gap: 10px;
+    z-index: 1000;
+    border-bottom-left-radius: 8px;
+    box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Mostrar menú cuando está activo */
+  .nav-buttons-group.mobile-menu-open {
+    right: 0;
+  }
+  
+  /* Ajustar botones en menú móvil */
+  .nav-buttons-group.mobile-menu-open .nav-button {
+    justify-content: flex-start;
+    padding: 12px 15px;
+    border-radius: 6px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Mostrar texto en menú móvil */
+  .nav-buttons-group.mobile-menu-open .nav-button span {
+    display: inline;
+    margin-left: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .nav-buttons-group.mobile-menu-open .nav-button.active {
+    background-color: #5a67d8;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-nav {
+    padding: 0.6rem;
+    height: 55px;
+  }
+  
+  .top-nav h1 {
+    font-size: 1.1rem;
+  }
+  
+  .nav-button {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+  
+  .main-content {
+    padding: 10px;
+  }
+  
+  .reminder-header {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+  
+  .reminder-info {
+    padding: 12px;
+  }
+  
+  .reminder-info small {
+    font-size: 0.8rem;
+  }
+  
+  .fab-main {
+    width: 50px;
+    height: 50px;
+    font-size: 28px;
+  }
+  
+  .fab-option {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  /* Ajustar menú móvil para pantallas pequeñas */
+  .nav-buttons-group {
+    top: 55px;
+    width: 180px;
+  }
+  
+  .mobile-menu-overlay {
+    top: 55px;
+  }
+  
+  .mobile-menu-toggle {
+    right: 10px;
+    top: 12px;
+    font-size: 1.3rem;
+  }
+}

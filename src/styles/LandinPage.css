@@ -1,0 +1,186 @@
+/* Tus estilos originales se mantienen intactos */
+body, html {
+    background-color: white !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+
+  nav {   /* Barra */
+    width: 100%;
+    padding: 16px;
+    background: #7f86d4;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  nav h1 { /* citamed */
+    font-size: 24px;
+    font-weight: bold;
+    color:#ffffff;
+  }
+  
+  .btn-nav { /* Boton de Inicio */
+    margin-right: 16px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color:antiquewhite;
+    background-color: #7f86d4;
+    transform: scale(1.05);
+  }
+  
+  .btn-nav:last-child { /* Boton de registrate  */
+    background-color: #7f86d4;
+    transform: scale(1.05);
+  }
+  
+  /* Contenido principal */
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    color: #7f86d4;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+  }
+  
+  h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #4b5563;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+
+  /* Sección de características */
+.features {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.feature {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 250px;
+}
+
+.feature-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+.feature-text {
+  font-size: 14px;
+  color: #555;
+}
+  
+  .btn { /* Boton de comenzar */
+    display: inline-block;
+    background-color: #4f46e5;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+  }
+  
+  .btn:hover {
+    background-color: #4338ca;
+    transform: scale(1.05);
+  }
+
+  /* Solo agregaré media queries al final para hacerlo responsive */
+  /* RESPONSIVE STYLES */
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      padding: 12px;
+    }
+    
+    nav h1 {
+      margin-bottom: 12px;
+    }
+    
+    .features {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .feature {
+      width: 80%;
+      max-width: 300px;
+      margin-bottom: 15px;
+    }
+    
+    h2 {
+      font-size: 28px;
+    }
+    
+    p {
+      font-size: 16px;
+      padding: 0 15px;
+    }
+    
+    .container {
+      padding: 80px 20px 40px;
+      height: auto;
+      min-height: 100vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    nav {
+      padding: 10px;
+    }
+    
+    .btn-nav {
+      margin-right: 10px;
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+    
+    h2 {
+      font-size: 24px;
+    }
+    
+    p {
+      font-size: 14px;
+    }
+    
+    .feature {
+      width: 90%;
+      padding: 12px;
+    }
+    
+    .feature-title {
+      font-size: 18px;
+    }
+    
+    .btn {
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+  }

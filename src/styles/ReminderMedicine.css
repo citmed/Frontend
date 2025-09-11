@@ -1,0 +1,232 @@
+.reminder-medicine-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: white;
+}
+
+.reminder-medicine-header {
+  background-color: #7986CB;
+  color: white;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.reminder-banner {
+  background-color: #7986CB;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 20px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.reminder-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reminder-close-btn:hover {
+  color: white;
+  background-color: #7986CB;
+}
+
+.reminder-title {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.milogo-medicine {
+  height: 165px;   /* tamaño reducido */
+  width: auto;    /* mantiene proporción */
+  margin-right: -80px; /* espacio entre logo y texto */
+}
+
+.frequency-section {
+  margin: 20px 0;
+}
+
+.frequency-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.frequency-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.frequency-button {
+  padding: 10px 30px;
+  background-color: white;
+  border: 1px solid #000;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.frequency-button:hover {
+  background-color: #7986CB;
+  color: white;
+}
+
+.frequency-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+  margin: 15px 0;
+}
+
+.frequency-note i {
+  font-size: 18px;
+}
+
+.schedule-button {
+  background-color: #7986CB;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #000;
+}
+
+.continue-button {
+  background-color: #7986CB;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.reminder-medicine-content {
+  background-color: #fff;
+  padding: 30px 20px;
+}
+
+.reminder-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.reminder-label {
+  display: block;
+  font-weight: 500;
+  margin: 15px 0 8px;
+  color: #333;
+}
+
+.reminder-input,
+.reminder-textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #2b2b2b;
+  color: black;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.reminder-input:focus,
+.reminder-textarea:focus {
+  outline: none;
+  border-color: #7986CB;
+}
+
+.reminder-textarea {
+  height: 100px;
+  resize: none;
+}
+
+.reminder-note {
+  font-size: 13px;
+  color: #666;
+  margin: 5px 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reminder-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.reminder-small-input {
+  width: 120px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.reminder-units {
+  font-weight: 500;
+  color: #333;
+}
+
+.reminder-submit-btn {
+  width: 100%;
+  margin-top: 25px;
+  background-color: #7986CB;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.reminder-submit-btn:hover {
+  background-color: #6977b8;
+}
+
+

@@ -1,0 +1,157 @@
+.time-table-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.time-table-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.time-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.time-table-header h2 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.time-table-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.time-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.time-table th {
+  background-color: #839ee3;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.time-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.time-table td:hover {
+  background-color: #f0f4ff;
+}
+
+.time-table td.selected {
+  background-color: #839ee3;
+  color: white;
+}
+
+.time-periods {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.period-column {
+  flex: 1;
+}
+
+.period-title {
+  background-color: #839ee3;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+  font-weight: bold;
+}
+
+.time-slots {
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.time-slot {
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #ddd;
+}
+
+.time-slot:last-child {
+  border-bottom: none;
+}
+
+.time-slot:hover {
+  background-color: #f0f4ff;
+}
+
+.time-slot.selected {
+  background-color: #839ee3;
+  color: white;
+}
+
+.time-table-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.time-table-cancel,
+.time-table-confirm {
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.time-table-cancel {
+  background-color: #f0f0f0;
+  border: none;
+  color: #333;
+}
+
+.time-table-confirm {
+  background-color: #839ee3;
+  border: none;
+  color: white;
+}
+
+.time-table-cancel:hover {
+  background-color: #e0e0e0;
+}
+
+.time-table-confirm:hover {
+  background-color: #6f89cc;
+} 

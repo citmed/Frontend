@@ -1,0 +1,307 @@
+/* 📌 Contenedor principal */
+.followup-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f7fa;
+  background-color: white;
+  position: relative;
+}
+.followup-completed {
+  font-size: 0.85rem;
+  color: #155724;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* 📌 Header fijo */
+.followup-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #5a67d8, #6b73e0);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Botón de regreso */
+.followup-back {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.followup-back:hover{
+  background-color: #5a67d8;
+}
+
+.followup-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* 📌 Contenido principal */
+.followup-main {
+  background-color: white;
+  padding: 20px;
+  margin-top: 70px; /* Espacio para el header */
+}
+
+/* 📌 Lista de recordatorios */
+.followup-list {
+  background-color: white;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* siempre 3 tarjetas por fila */
+  gap: 15px; /* espacio entre tarjetas */
+  padding: 0;
+  margin: 0;
+}
+
+
+
+/* 📌 Tarjetas individuales */
+.followup-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Icono izquierdo */
+.followup-left {
+  flex-shrink: 0;
+}
+
+.followup-icon {
+  font-size: 2rem;
+  color: #5a67d8;
+}
+
+/* Información central */
+.followup-info {
+  flex: 1;
+  text-align: left;
+}
+
+.followup-reminder-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: #2d3748;
+}
+
+.followup-description {
+  font-size: 0.9rem;
+  margin: 0 0 8px 0;
+  color: #555;
+}
+
+.followup-small {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 2px 0;
+}
+
+.followup-frequency {
+  font-size: 0.8rem;
+  background: #e2e8f0;
+  color: #4a5568;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* Controles derechos */
+.followup-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.followup-question {
+  font-size: 0.85rem;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* Switch toggle */
+.followup-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.followup-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.followup-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+.followup-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.followup-switch input:checked + .followup-slider {
+  background-color: #48bb78;
+}
+
+.followup-switch input:checked + .followup-slider:before {
+  transform: translateX(24px);
+}
+
+/* Mensaje sin datos */
+.followup-no-data {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+/* 📌 Responsive */
+@media (max-width: 768px) {
+  .followup-header {
+    padding: 12px 16px;
+  }
+  
+  .followup-title {
+    font-size: 1.2rem;
+  }
+  
+  .followup-main {
+    padding: 15px;
+    margin-top: 60px;
+  }
+  
+  .followup-card {
+    padding: 15px;
+    gap: 12px;
+  }
+  
+  .followup-icon {
+    font-size: 1.8rem;
+  }
+  
+  .followup-reminder-title {
+    font-size: 1rem;
+  }
+  
+  .followup-description {
+    font-size: 0.85rem;
+  }
+  
+  .followup-small {
+    font-size: 0.8rem;
+  }
+  
+  .followup-question {
+    font-size: 0.8rem;
+  }
+  
+  .followup-switch {
+    width: 45px;
+    height: 24px;
+  }
+  
+  .followup-slider:before {
+    height: 18px;
+    width: 18px;
+  }
+  
+  .followup-switch input:checked + .followup-slider:before {
+    transform: translateX(21px);
+  }
+}
+
+@media (max-width: 480px) {
+  .followup-header {
+    padding: 10px 12px;
+  }
+  
+  .followup-title {
+    font-size: 1.1rem;
+  }
+  
+  .followup-main {
+    padding: 10px;
+    margin-top: 55px;
+  }
+  
+  .followup-card {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .followup-icon {
+    font-size: 1.5rem;
+  }
+  
+  .followup-reminder-title {
+    font-size: 0.95rem;
+  }
+  
+  .followup-description {
+    font-size: 0.8rem;
+  }
+  
+  .followup-small {
+    font-size: 0.75rem;
+  }
+  
+  .followup-question {
+    font-size: 0.75rem;
+  }
+  
+  .followup-switch {
+    width: 40px;
+    height: 22px;
+  }
+  
+  .followup-slider:before {
+    height: 16px;
+    width: 16px;
+  }
+  
+  .followup-switch input:checked + .followup-slider:before {
+    transform: translateX(18px);
+  }
+}

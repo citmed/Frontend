@@ -1,0 +1,75 @@
+.created-container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: white;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.created-header {
+  background-color: white;
+  color: #839ee3;
+  padding: 25px;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.created-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 60px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.check-icon {
+  background-color: #4b3fc4;
+  color: white;
+  font-size: 100px;
+  padding: 50px;
+  border-radius: 50%;
+  margin-bottom: 60px;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(75, 63, 196, 0.2);
+}
+
+.created-message {
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 70px;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: #4b3fc4;
+}
+
+.continue-btn {
+  background-color: white;
+  color: #4b3fc4;
+  font-weight: bold;
+  border: 3px solid #4b3fc4;
+  padding: 20px 50px;
+  border-radius: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  min-width: 250px;
+  transition: all 0.3s ease;
+}
+
+.continue-btn:hover {
+  background-color: #4b3fc4;
+  color: white;
+}

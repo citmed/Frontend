@@ -1,0 +1,311 @@
+.frequency-container {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  background-color: white;
+}
+
+/* ✅ Header fijo en la parte superior */
+nav.bottom {
+  background-color: #839ee3;
+  height: 60px;             /* altura fija */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: white;
+  position: fixed;          /* se queda arriba */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* ✅ Ahora el contenido arranca debajo del header */
+.frequency-box {
+  padding: 70px 50px;
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+  background-color: white;
+  margin-top: 80px;  /* igual o mayor a la altura del nav */
+}
+
+.frequency-title-bar {
+  background-color: #839ee3;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.frequency-title-bar h2 {
+  margin: 0;
+  font-size: 26px;
+  flex-grow: 1;
+  text-align: center;
+  padding-right: 40px;
+}
+
+.close-btn {
+  position: static;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.frequency-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.frequency-content h3 {
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+.frequency-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 40px;
+  background-color: white;
+}
+
+.frequency-btn {
+  border: 2px solid #333;
+  padding: 15px 40px;
+  color: black;
+  border-radius: 12px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.frequency-btn:hover {
+  background-color: #839ee3;
+  color: white;
+  border-color: #839ee3;
+}
+
+/* Estilo para el botón seleccionado */
+.frequency-btn.selected {
+  background-color: #839ee3;
+  color: white;
+  border-color: #839ee3;
+  box-shadow: 0 0 10px rgba(131, 158, 227, 0.5);
+}
+
+.frequency-note {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin: 25px 0 35px;
+  color: #333;
+  background-color: white;
+}
+
+.set-time-btn {
+  background-color: #839ee3;
+  color: white;
+  border: none;
+  padding: 18px 45px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.set-time-btn:hover {
+  background-color: #6f89cc;
+}
+
+/* Estilos para las horas seleccionadas */
+.selected-times {
+  margin: 20px 0 30px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #f8f9ff;
+  border: 1px solid #e0e4f5;
+}
+
+.selected-times-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.selected-times-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.time-chip {
+  background-color: #839ee3;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.remove-time-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.remove-time-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.frequency-nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: black;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #9fb7f3;
+  color: #ffffff;
+}
+
+.continue-btn {
+  background-color: #839ee3;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.continue-btn:hover {
+  background-color: #6f89cc;
+}
+
+.continue-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+
+/*  Contenedor del intervalo personalizado */
+.custom-interval {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/*  Label */
+.custom-interval label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 📌 Select */
+.custom-interval select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background:  #839ee3;
+  color: #000000;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.custom-interval select:hover {
+  border-color: #7aa4ff;
+  background: #f0f6ff;
+}
+
+.custom-interval select:focus {
+  outline: none;
+  border-color: #4a90e2;
+  background: #eef5ff;
+  box-shadow: 0 0 4px rgba(74, 144, 226, 0.4);
+}
+
+/* 📌 Texto con icono */
+.custom-interval p {
+  font-size: 13px;
+  text-align: center;
+  color: #000000;
+  display: flex;
+  justify-content: center;  /* centra el ícono + texto */
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.custom-interval p svg {
+  color: #000000;
+  font-size: 16px;
+}
