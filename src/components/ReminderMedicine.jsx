@@ -18,7 +18,7 @@ function ReminderMedicine() {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [dosis, setDosis] = useState('');
-  const [unidad, setUnidad] = useState('Unidades'); // 👈 ahora será dinámico
+  const [unidad, setUnidad] = useState(''); // 
   const [cantidadDisponible, setCantidadDisponible] = useState('');
   const [fecha, setFecha] = useState(defaultDate);
   const [hora, setHora] = useState(defaultTime);
@@ -94,8 +94,10 @@ function ReminderMedicine() {
               className="reminder-input" 
               value={unidad} 
               onChange={(e)=>setUnidad(e.target.value)}
+              min="1"
               required
             >
+              <option value="" disabled hidden>Seleccione una unidad</option>
               <option value="Unidades">Unidades (tabletas, cápsulas)</option>
               <option value="Miligramos">Miligramos (mg)</option>
               <option value="Gramos">Gramos (g)</option>
@@ -114,6 +116,7 @@ function ReminderMedicine() {
               className="reminder-small-input" 
               value={cantidadDisponible} 
               onChange={(e)=>setCantidadDisponible(e.target.value)} 
+              min="1"
               required 
             /> {unidad}
           </div>
