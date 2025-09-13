@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa"; // 👈 importamos los ícon
 import "../styles/ResetPassword.css";
 
 function ResetPassword() {
-  const { token } = useParams(); 
+  const { token } = useParams();
   const navigate = useNavigate();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -13,6 +13,28 @@ function ResetPassword() {
   const [showPassword, setShowPassword] = useState(false); // 👈 estado para mostrar/ocultar
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  // --- Indicador de seguridad ---
+  const getPasswordStrength = (password) => {
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[a-z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength++;
+    return strength;
+  };
+  const strength = getPasswordStrength(newPassword);
+
+  const validatePassword = (password) => {
+    if (password.length < 8) return "La contraseña debe tener al menos 8 caracteres";
+    if (!/[A-Z]/.test(password)) return "Debe contener al menos una letra mayúscula";
+    if (!/[a-z]/.test(password)) return "Debe contener al menos una letra minúscula";
+    if (!/[0-9]/.test(password)) return "Debe contener al menos un número";
+    if (!/[!@#$%^&*(),.?\":{}|<>]/.test(password)) return "Debe contener al menos un carácter especial";
+    return null;
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -20,6 +42,12 @@ function ResetPassword() {
 
     if (newPassword !== confirmPassword) {
       setError("Las contraseñas no coinciden");
+      return;
+    }
+
+    const validationError = validatePassword(newPassword);
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
@@ -51,7 +79,7 @@ function ResetPassword() {
     <div className="reset-container">
       <h2>Restablecer contraseña</h2>
       <form onSubmit={handleSubmit}>
-        
+
         {/* Campo de nueva contraseña */}
         <div className="input-group">
           <input
@@ -68,6 +96,24 @@ function ResetPassword() {
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
+
+        {/* Indicador de seguridad */}
+        <div className="password-strength">
+          <div className={`strength-bar ${strength >= 1 ? "active" : ""}`} />
+          <div className={`strength-bar ${strength >= 2 ? "active" : ""}`} />
+          <div className={`strength-bar ${strength >= 3 ? "active" : ""}`} />
+          <div className={`strength-bar ${strength >= 4 ? "active" : ""}`} />
+          <div className={`strength-bar ${strength >= 5 ? "active" : ""}`} />
+        </div>
+        <p className="strength-text">
+          {strength === 0 && "Muy débil"}
+          {strength === 1 && "Muy débil"}
+          {strength === 2 && "Débil"}
+          {strength === 3 && "Aceptable"}
+          {strength === 4 && "Fuerte"}
+          {strength === 5 && "Muy fuerte"}
+        </p>
+
 
         {/* Campo de confirmar contraseña */}
         <div className="input-group">
