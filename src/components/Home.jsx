@@ -5,6 +5,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../styles/Home.css";
 import axios from "axios";
+import logo from "../assets/Logocitamed.png";
+import citas from "../assets/citas.avif";
 
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -107,7 +109,7 @@ const Home = () => {
       {/* Encabezado */}
       <header className="main-header">
         <img 
-          src="/assets/Logocitamed.png" 
+          src={logo} 
           alt="Seguimiento y cumplimiento" 
           className="milogo" 
         />
@@ -230,7 +232,7 @@ const Home = () => {
       {/* Imagen ilustrativa */}
       <div className="text-center mt-8">
         <img
-          src="/assets/citas.avif"
+          src={citas}
           alt="Seguimiento y cumplimiento"
           className="img mx-auto max-w-xs sm:max-w-sm rounded-lg shadow"
         />
