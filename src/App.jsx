@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Login from './components/Login';
 import Register from './components/Register';
 import RegisterAdmin from './components/RegisterAdmin';
-import AdminDashboard from './components/AdminDashboard';
 import LandingPage from './components/LandinPage';
 import Home from './components/Home';
 import Reminder from './components/Reminder';
