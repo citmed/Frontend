@@ -173,7 +173,7 @@ function Login() {
 
           <p>
             ¿Olvidaste tu contraseña?{" "}
-            <a href="/forgot-password">Recupérala aquí</a>
+            <a href="/forgotpassword">Recupérala aquí</a>
           </p>
           <p>
             ¿Aún no estás registrado? <a href="/register">Registrarse</a>
