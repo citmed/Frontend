@@ -15,7 +15,7 @@ function ForgotPassword() {
     setMessage("");
 
     try {
-      const response = await fetch("https://citamedback.vercel.app/api/auth/forgot-password", {
+      const response = await fetch("https://citamedback.vercel.app/api/auth", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username }), // 👈 usamos username
