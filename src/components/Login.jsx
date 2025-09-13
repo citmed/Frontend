@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../styles/Login.css";
 import loginImage from "../assets/imagencitamed.jpg";
 
-const API_URL = "http://localhost:5000/api/login";
+const API_URL = "https://citamedback.vercel.app/api/login";
 const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 function Login() {

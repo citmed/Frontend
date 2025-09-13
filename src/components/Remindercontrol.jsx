@@ -43,7 +43,7 @@ const Remindercontrol = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5000/api/reminders", {
+      const response = await fetch("https://citamedback.vercel.app/api/reminders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
