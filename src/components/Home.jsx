@@ -107,7 +107,7 @@ const Home = () => {
       {/* Encabezado */}
       <header className="main-header">
         <img 
-          src="/public/Logo citamed.png" 
+          src="/assets/Logocitamed.png" 
           alt="Seguimiento y cumplimiento" 
           className="milogo" 
         />
@@ -230,7 +230,7 @@ const Home = () => {
       {/* Imagen ilustrativa */}
       <div className="text-center mt-8">
         <img
-          src="/public/citas.avif"
+          src="/assets/citas.avif"
           alt="Seguimiento y cumplimiento"
           className="img mx-auto max-w-xs sm:max-w-sm rounded-lg shadow"
         />
