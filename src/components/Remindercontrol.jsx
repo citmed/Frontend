@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import '../styles/Remindercontrol.css';
-import logo from "../assets/Logocitamed.png";
 
 const Remindercontrol = () => {
   const navigate = useNavigate();
@@ -44,7 +43,7 @@ const Remindercontrol = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("https://citamedback.vercel.app/api/reminders", {
+      const response = await fetch("http://localhost:5000/api/reminders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +79,7 @@ const Remindercontrol = () => {
           <FaArrowLeft />
         </button>
                 <img 
-          src={logo}
+          src="/public/Logo citamed.png" 
           alt="Seguimiento y cumplimiento" 
           className="milogo-medicine" 
         />

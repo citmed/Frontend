@@ -17,7 +17,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchInfo = async () => {
       try {
-        const res = await axios.get("https://citamedback.vercel.app/api/info-user", {
+        const res = await axios.get("http://localhost:5000/api/info-user", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFormData(res.data);
@@ -36,7 +36,7 @@ export default function Profile() {
 
   const handleSave = async () => {
     try {
-      const res = await axios.put("https://citamedback.vercel.app/api/info-user", formData, {
+      const res = await axios.put("http://localhost:5000/api/info-user", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFormData(res.data);

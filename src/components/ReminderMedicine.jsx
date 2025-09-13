@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../styles/ReminderMedicine.css';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaInfoCircle } from 'react-icons/fa';
-import logo from "../assets/Logocitamed.png";
 
 function ReminderMedicine() {
   const navigate = useNavigate();
@@ -49,7 +48,7 @@ function ReminderMedicine() {
       <nav className="bottom">
         <button className="nav-button" onClick={handleBack}><FaArrowLeft /></button>
         <img 
-          src={logo}
+          src="/public/Logo citamed.png" 
           alt="Seguimiento y cumplimiento" 
           className="milogo-medicine" 
         />

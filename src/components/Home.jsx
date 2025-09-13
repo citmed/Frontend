@@ -5,8 +5,6 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../styles/Home.css";
 import axios from "axios";
-import logo from "../assets/Logocitamed.png";
-import citas from "../assets/citas.avif";
 
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -56,7 +54,7 @@ const Home = () => {
   useEffect(() => {
     const fetchReminders = async () => {
       try {
-        const res = await axios.get("https://citamedback.vercel.app/api/reminders", {
+        const res = await axios.get("http://localhost:5000/api/reminders", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setReminders(res.data || []);
@@ -109,7 +107,7 @@ const Home = () => {
       {/* Encabezado */}
       <header className="main-header">
         <img 
-          src={logo} 
+          src="/public/Logo citamed.png" 
           alt="Seguimiento y cumplimiento" 
           className="milogo" 
         />
@@ -232,7 +230,7 @@ const Home = () => {
       {/* Imagen ilustrativa */}
       <div className="text-center mt-8">
         <img
-          src={citas}
+          src="/public/citas.avif"
           alt="Seguimiento y cumplimiento"
           className="img mx-auto max-w-xs sm:max-w-sm rounded-lg shadow"
         />

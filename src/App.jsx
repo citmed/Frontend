@@ -59,7 +59,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/register-admin" element={<RegisterAdmin />} />
           <Route path="/profile" element={<UserProfile />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
 
           {/* Redirección lógica del dashboard */}

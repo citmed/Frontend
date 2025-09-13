@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaArrowLeft, FaInfoCircle } from 'react-icons/fa';
 import '../styles/ReminderFrequency.css';
-import logo from "../assets/Logocitamed.png";
 
 function ReminderFrequency() {
   const navigate = useNavigate();
@@ -59,7 +58,7 @@ function ReminderFrequency() {
     };
 
     try {
-      const res = await fetch('https://citamedback.vercel.app/api/reminders', {
+      const res = await fetch('http://localhost:5000/api/reminders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +84,7 @@ function ReminderFrequency() {
       <nav className="bottom">
         <button className="nav-button" onClick={handleBack}><FaArrowLeft /></button>
         <img 
-          src={logo}
+          src="/public/Logo citamed.png" 
           alt="Seguimiento y cumplimiento" 
           className="milogo-medicine" 
         />

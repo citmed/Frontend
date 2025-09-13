@@ -3,7 +3,6 @@ import "../styles/Followup.css";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaPills, FaUserMd } from "react-icons/fa";
 import axios from "axios";
-import logo from "../assets/Logocitamed.png";
 
 const Followup = () => {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ const Followup = () => {
   const fetchReminders = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("https://citamedback.vercel.app/api/reminders", {
+      const res = await axios.get("http://localhost:5000/api/reminders", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -38,7 +37,7 @@ const Followup = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `https://citamedback.vercel.app/api/reminders/${id}/completed`,
+        `http://localhost:5000/api/reminders/${id}/completed`,
         { completed: !currentState },
         { headers: { Authorization: `Bearer ${token}` } }
       );

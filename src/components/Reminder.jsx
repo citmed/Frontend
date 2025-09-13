@@ -13,7 +13,6 @@ import {
   FaBars 
 } from "react-icons/fa";
 import axios from "axios";
-import logo from "../assets/Logocitamed.png";
 
 const Reminder = () => {
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ const Reminder = () => {
   const fetchReminders = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("https://citamedback.vercel.app/api/reminders", {
+      const res = await axios.get("http://localhost:5000/api/reminders", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -54,7 +53,7 @@ const Reminder = () => {
   const eliminarRecordatorio = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`https://citamedback.vercel.app/api/reminders/${id}`, {
+      await axios.delete(`http://localhost:5000/api/reminders/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -79,7 +78,7 @@ const Reminder = () => {
           <FaArrowLeft />
         </button>
         <img 
-          src={logo}
+          src="/public/Logo citamed.png" 
           alt="Seguimiento y cumplimiento" 
           className="milogo" 
         />
