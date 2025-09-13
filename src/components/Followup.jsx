@@ -101,7 +101,7 @@ const Followup = () => {
                     </p>
                   )}
 
-                  {  (
+                  {reminder.fecha && (
                     <>
                       <p className="followup-small">
                         📅{" "}
