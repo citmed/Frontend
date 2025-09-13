@@ -3,6 +3,7 @@ import "../styles/Followup.css";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaPills, FaUserMd } from "react-icons/fa";
 import axios from "axios";
+import logo from "../assets/Logocitamed.png";
 
 const Followup = () => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const Followup = () => {
           <FaArrowLeft />
         </button>
         <img 
-          src="/public/Logo citamed.png" 
+          src={logo}
           alt="Seguimiento y cumplimiento" 
           className="milogo" 
         />

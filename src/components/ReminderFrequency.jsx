@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaArrowLeft, FaInfoCircle } from 'react-icons/fa';
 import '../styles/ReminderFrequency.css';
+import logo from "../assets/Logocitamed.png";
 
 function ReminderFrequency() {
   const navigate = useNavigate();
@@ -84,7 +85,7 @@ function ReminderFrequency() {
       <nav className="bottom">
         <button className="nav-button" onClick={handleBack}><FaArrowLeft /></button>
         <img 
-          src="/public/Logo citamed.png" 
+          src={logo}
           alt="Seguimiento y cumplimiento" 
           className="milogo-medicine" 
         />

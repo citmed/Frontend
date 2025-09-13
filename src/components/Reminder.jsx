@@ -13,6 +13,7 @@ import {
   FaBars 
 } from "react-icons/fa";
 import axios from "axios";
+import logo from "../assets/Logocitamed.png";
 
 const Reminder = () => {
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ const Reminder = () => {
           <FaArrowLeft />
         </button>
         <img 
-          src="/public/Logo citamed.png" 
+          src={logo}
           alt="Seguimiento y cumplimiento" 
           className="milogo" 
         />
