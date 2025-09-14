@@ -66,7 +66,7 @@ const Followup = () => {
         <img
           src="/public/Logo citamed.png"
           alt="Seguimiento y cumplimiento"
-          className="milogo"
+          className="milogo-followup"
         />
         <h1 className="followup-title">Seguimiento a paciente</h1>
       </header>
