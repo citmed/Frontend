@@ -127,7 +127,7 @@ function Login() {
       {/* Columna derecha - Login */}
       <div className="login-container">
         <div className="login-box">
-          <img src={logo} className="milogo" />
+          <img src={logo} className="milogo-login" />
           <h2>INICIO DE SESIÓN</h2>
           <form onSubmit={handleLogin}>
             <div className="input-group">
