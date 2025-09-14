@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import '../styles/Remindercontrol.css';
+import logo from "../assets/Logocitamed.png";
 
 const Remindercontrol = () => {
   const navigate = useNavigate();
@@ -79,7 +80,7 @@ const Remindercontrol = () => {
           <FaArrowLeft />
         </button>
                 <img 
-          src="/public/Logo citamed.png" 
+          src={logo} 
           alt="Seguimiento y cumplimiento" 
           className="milogo-medicine" 
         />

@@ -5,6 +5,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../styles/Home.css";
 import axios from "axios";
+import logo from "../assets/Logocitamed.png";
 
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -107,7 +108,7 @@ const Home = () => {
       {/* Encabezado */}
       <header className="main-header">
         <img 
-          src="/public/Logo citamed.png" 
+          src={logo} 
           alt="Seguimiento y cumplimiento" 
           className="milogo" 
         />
