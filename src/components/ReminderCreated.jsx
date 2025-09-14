@@ -17,14 +17,6 @@ function ReminderCreated() {
   return (
     <>
       <nav className="bottom">
-        <button className="nav-button" onClick={handleBack}>
-          <FaArrowLeft />
-        </button>
-        <img 
-          src="/public/Logo citamed.png" 
-          alt="Seguimiento y cumplimiento" 
-          className="milogo-medicine" 
-        />
       </nav>
 
       <main className="created-content">

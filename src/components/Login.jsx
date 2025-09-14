@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import "../styles/Login.css";
 import loginImage from "../assets/imagencitamed.jpg";
 import logo from "../assets/Logocitamed.png";
@@ -127,11 +127,8 @@ function Login() {
       {/* Columna derecha - Login */}
       <div className="login-container">
         <div className="login-box">
-          <img src={logo} 
-          className="milogo" 
-          />
+          <img src={logo} className="milogo" />
           <h2>INICIO DE SESIÓN</h2>
-
           <form onSubmit={handleLogin}>
             <div className="input-group">
               <label htmlFor="usuario">Usuario:</label>
@@ -144,7 +141,7 @@ function Login() {
                 required
               />
             </div>
-
+            
             <div className="input-group password-group">
               <label htmlFor="password">Contraseña:</label>
               <div className="password-wrapper">
