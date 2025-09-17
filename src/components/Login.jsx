@@ -7,7 +7,7 @@ import loginImage from "../assets/imagencitamed.jpg";
 import logo from "../assets/Logocitamed.png";
 
 const API_URL = "https://citamedback.vercel.app/api/login";
-const SITE_KEY = VITE_RECAPTCHA_SITE_KEY;
+const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 function Login() {
   const [username, setUsername] = useState("");
