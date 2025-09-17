@@ -6,13 +6,8 @@ import "../styles/Login.css";
 import loginImage from "../assets/imagencitamed.jpg";
 import logo from "../assets/Logocitamed.png";
 
-// 👇 Ahora API_URL apunta a la raíz, no directamente a /login
-const API_URL = import.meta.env.VITE_API_URL || "https://citamedback.vercel.app/api";
-
-// 👇 SITE_KEY desde .env o fallback
-const SITE_KEY =
-  import.meta.env.VITE_RECAPTCHA_SITE_KEY ||
-  "6LeW0LErAAAAAIKalgvz2LKBAHMue_GpxaFF8LpS";
+const API_URL = "https://citamedback.vercel.app/api/login";
+const SITE_KEY = VITE_RECAPTCHA_SITE_KEY;
 
 function Login() {
   const [username, setUsername] = useState("");
