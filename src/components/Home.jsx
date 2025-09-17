@@ -234,7 +234,7 @@ const Home = () => {
         <img
           src={citas}
           alt="Seguimiento y cumplimiento"
-          className="img mx-auto max-w-xs sm:max-w-sm rounded-lg shadow"
+          className="mi logo"
         />
       </div>
     </div>
