@@ -13,9 +13,8 @@
 }
 
 .reminder-banner {
-  background-color: #7986CB;
-  border-radius: 10px;
-  color: white;
+  margin-top: 150px;
+  color: black;
   padding: 15px 20px;
   font-size: 20px;
   display: flex;
@@ -229,4 +228,39 @@
   background-color: #6977b8;
 }
 
+.bottom {
+  display: flex;
+  justify-content: space-between; /* Botón a la izquierda, logo a la derecha */
+  align-items: center;            /* Centra verticalmente */
+  background-color: #7986CB;
+  padding: 5px 15px; /* menos padding para que el logo no baje */
+  height: 70px;      /* altura fija para que el logo se ajuste */
+}
 
+
+.milogo-medicine {
+  height: 110px;
+  width: auto;
+  position: absolute;
+  top: 50%;                    /* baja hasta la mitad del nav */
+  left: 70%;
+  transform: translate(-40%, -50%); /* sube justo al centro */
+}
+
+/* Botón del nav */
+.nav-button {
+  background: none;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  color: #ffffffd0;
+}
+
+
+/* El contenido ya no necesita margin-top manual,
+   solo le damos padding para no quedar debajo del nav */
+.reminder-medicine-content {
+  background-color: #fff;
+  padding: 30px 20px;
+  margin-top: 120px; /* = altura aprox. de la barra de navegación */
+}

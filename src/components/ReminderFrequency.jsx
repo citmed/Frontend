@@ -85,7 +85,7 @@ function ReminderFrequency() {
       <nav className="bottom">
         <button className="nav-button" onClick={handleBack}><FaArrowLeft /></button>
         <img 
-          src={logo}
+          src={logo} 
           alt="Seguimiento y cumplimiento" 
           className="milogo-medicine" 
         />

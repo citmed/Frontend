@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaCheck, FaArrowLeft } from 'react-icons/fa';
 import '../styles/ReminderCreated.css';
-import logo from "../assets/Logocitamed.png";
 
 function ReminderCreated() {
   const navigate = useNavigate();
@@ -18,14 +17,6 @@ function ReminderCreated() {
   return (
     <>
       <nav className="bottom">
-        <button className="nav-button" onClick={handleBack}>
-          <FaArrowLeft />
-        </button>
-        <img 
-          src={logo} 
-          alt="Seguimiento y cumplimiento" 
-          className="milogo-medicine" 
-        />
       </nav>
 
       <main className="created-content">

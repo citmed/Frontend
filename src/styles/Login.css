@@ -133,6 +133,14 @@ html, body {
   text-align: center;
 }
 
+/* Logo */
+.milogo-login {
+  height: 100px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  border-radius: 0%;
+}
+
 /* Estilos responsivos - se agregan al final sin modificar los originales */
 @media (max-width: 1024px) {
   .login-box {

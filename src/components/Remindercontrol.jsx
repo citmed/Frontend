@@ -80,7 +80,7 @@ const Remindercontrol = () => {
           <FaArrowLeft />
         </button>
                 <img 
-          src={logo}
+          src={logo} 
           alt="Seguimiento y cumplimiento" 
           className="milogo-medicine" 
         />

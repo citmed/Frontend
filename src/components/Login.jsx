@@ -1,13 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import "../styles/Login.css";
 import loginImage from "../assets/imagencitamed.jpg";
 import logo from "../assets/Logocitamed.png";
 
-const API_URL = "https://citamedback.vercel.app/api/login";
-const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+// 👇 Ahora API_URL apunta a la raíz, no directamente a /login
+const API_URL = import.meta.env.VITE_API_URL || "https://citamedback.vercel.app/api";
+
+// 👇 SITE_KEY desde .env o fallback
+const SITE_KEY =
+  import.meta.env.VITE_RECAPTCHA_SITE_KEY ||
+  "6LeW0LErAAAAAIKalgvz2LKBAHMue_GpxaFF8LpS";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -60,7 +65,8 @@ function Login() {
     }
 
     try {
-      const response = await fetch(API_URL, {
+      // 👇 Aquí agrego /login al endpoint
+      const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password, captcha: captchaToken }),
@@ -121,12 +127,8 @@ function Login() {
       {/* Columna derecha - Login */}
       <div className="login-container">
         <div className="login-box">
-          <img
-            src={logo}
-            className="milogo"
-          />
+          <img src={logo} className="milogo-login" />
           <h2>INICIO DE SESIÓN</h2>
-
           <form onSubmit={handleLogin}>
             <div className="input-group">
               <label htmlFor="usuario">Usuario:</label>
@@ -139,7 +141,7 @@ function Login() {
                 required
               />
             </div>
-
+            
             <div className="input-group password-group">
               <label htmlFor="password">Contraseña:</label>
               <div className="password-wrapper">
@@ -177,7 +179,7 @@ function Login() {
 
           <p>
             ¿Olvidaste tu contraseña?{" "}
-            <a href="/forgotpassword">Recupérala aquí</a>
+            <a href="/forgot-password">Recupérala aquí</a>
           </p>
           <p>
             ¿Aún no estás registrado? <a href="/register">Registrarse</a>
