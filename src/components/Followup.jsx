@@ -102,22 +102,26 @@ const Followup = () => {
                     </p>
                   )}
 
-                  {/* ✅ Mostrar horarios si existen */}
-                  {reminder.horarios &&
-                    reminder.horarios.length > 0 &&
-                    reminder.horarios.map((horaStr, index) => (
-                      <p key={index} className="followup-small">
-                        ⏰ {horaStr}
-                      </p>
-                    ))}
-
-                  {/* ✅ Mostrar fecha */}
                   {reminder.fecha && (
-                    <p className="followup-small">
-                      📅 {new Date(reminder.fecha).toLocaleDateString("es-CO")}
-                    </p>
+                    <>
+                      <p className="followup-small">
+                        📅{" "}
+                        {new Date(reminder.fecha).toLocaleDateString("es-CO", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                        })}
+                      </p>
+                      <p className="followup-small">
+                        🕒{" "}
+                        {new Date(reminder.fecha).toLocaleTimeString("es-CO", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          hour12: true, // 👉 quítalo si prefieres formato 24h
+                        })}
+                      </p>
+                    </>
                   )}
-
                   {/* ✅ Mostrar frecuencia */}
                   {reminder.frecuencia && (
                     <p className="followup-frequency">{reminder.frecuencia}</p>
