@@ -13,10 +13,8 @@
 }
 
 .reminder-banner {
-  background-color: #7986CB;
-  border-radius: 20px;
-  margin-top: 50px;
-  color: white;
+  margin-top: 150px;
+  color: black;
   padding: 15px 20px;
   font-size: 20px;
   display: flex;

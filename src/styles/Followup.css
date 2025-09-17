@@ -68,17 +68,26 @@
   margin-top: 80px; /* Espacio para el header */
   min-height: calc(100vh - 80px);
   box-sizing: border-box;
+  overflow-x: auto; /* Permite scroll horizontal si es necesario */
 }
 
-/* 📌 Lista de recordatorios */
+/* Contenedor de la cuadrícula */
+.followup-grid-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* 📌 Lista de recordatorios - DISPOSICIÓN HORIZONTAL */
 .followup-list {
   background-color: white;
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex; /* Cambiado a flex para disposición horizontal */
   gap: 15px; /* espacio entre tarjetas */
-  padding: 0;
+  padding: 10px;
   margin: 0;
+  margin-top: 90px;
+  width: max-content; /* Permite que el ancho se ajuste al contenido */
+  min-width: 100%; /* Asegura que ocupe todo el ancho disponible */
 }
 
 /* 📌 Tarjetas individuales */
@@ -86,20 +95,35 @@
   background: white;
   border-radius: 12px;
   padding: 20px;
-  margin-bottom: 15px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   display: flex;
-  align-items: center;
-  gap: 15px;
+  flex-direction: column;
+  min-width: 280px; /* Ancho mínimo para cada tarjeta */
+  max-width: 320px; /* Ancho máximo para cada tarjeta */
+  height: auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.followup-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.followup-card.completed {
+  opacity: 0.8;
+  background-color: #f8fff9;
+  border-left: 4px solid #48bb78;
 }
 
 /* Icono izquierdo */
 .followup-left {
-  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
 .followup-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #5a67d8;
 }
 
@@ -107,25 +131,28 @@
 .followup-info {
   flex: 1;
   text-align: left;
+  margin-bottom: 15px;
 }
 
 .followup-reminder-title {
   font-size: 1.1rem;
   font-weight: 600;
-  margin: 0 0 5px 0;
+  margin: 0 0 10px 0;
   color: #2d3748;
+  text-align: center;
 }
 
 .followup-description {
   font-size: 0.9rem;
-  margin: 0 0 8px 0;
+  margin: 0 0 12px 0;
   color: #555;
+  line-height: 1.4;
 }
 
 .followup-small {
   font-size: 0.85rem;
   color: #666;
-  margin: 2px 0;
+  margin: 4px 0;
 }
 
 .followup-frequency {
@@ -144,7 +171,9 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
+  margin-top: auto; /* Empuja este elemento hacia la parte inferior */
+  padding-top: 15px;
+  border-top: 1px solid #eee;
 }
 
 .followup-question {
@@ -152,6 +181,7 @@
   color: #333;
   margin: 0;
   text-align: center;
+  font-weight: 600;
 }
 
 /* Switch toggle */
@@ -204,21 +234,24 @@
 .followup-no-data {
   text-align: center;
   color: #666;
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-top: 50px;
-  padding: 20px;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  grid-column: 1 / -1;
 }
 
 /* 📌 Responsive */
 @media (max-width: 1200px) {
-  .followup-list {
-    grid-template-columns: repeat(4, 1fr);
+  .followup-card {
+    min-width: 260px;
   }
 }
 
 @media (max-width: 992px) {
-  .followup-list {
-    grid-template-columns: repeat(3, 1fr);
+  .followup-card {
+    min-width: 240px;
   }
 }
 
@@ -232,7 +265,7 @@
   }
   
   .milogo-followup {
-    height: 155px;
+    height: 35px;
     margin-right: 12px;
   }
   
@@ -241,17 +274,13 @@
     margin-top: 70px;
   }
   
-  .followup-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
   .followup-card {
+    min-width: 220px;
     padding: 15px;
-    gap: 12px;
   }
   
   .followup-icon {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
   
   .followup-reminder-title {
@@ -286,10 +315,6 @@
 }
 
 @media (max-width: 576px) {
-  .followup-list {
-    grid-template-columns: 1fr;
-  }
-  
   .followup-header {
     padding: 10px 12px;
   }
@@ -313,43 +338,51 @@
     margin-top: 65px;
   }
   
+  /* Para móviles, cambiamos a disposición vertical */
+  .followup-list {
+    flex-direction: column;
+    width: 100%;
+  }
+  
   .followup-card {
-    padding: 12px;
-    gap: 10px;
+    min-width: auto;
+    max-width: 100%;
+    width: 100%;
+    padding: 15px;
   }
   
   .followup-icon {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   
   .followup-reminder-title {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
   
   .followup-description {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
   
   .followup-small {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
   
   .followup-question {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
   
   .followup-switch {
-    width: 40px;
-    height: 22px;
+    width: 50px;
+    height: 26px;
   }
   
   .followup-slider:before {
-    height: 16px;
-    width: 16px;
+    height: 20px;
+    width: 20px;
   }
   
   .followup-switch input:checked + .followup-slider:before {
-    transform: translateX(18px);
+    transform: translateX(24px);
   }
 }
 
@@ -363,7 +396,7 @@
   }
   
   .milogo-followup {
-    height: 28px;
+    height: 128px;
     margin-right: 8px;
   }
   
@@ -377,10 +410,14 @@
   }
   
   .followup-card {
-    padding: 10px;
+    padding: 12px;
   }
   
   .followup-reminder-title {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+  }
+  
+  .followup-description {
+    font-size: 0.8rem;
   }
 }
