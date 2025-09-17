@@ -8,9 +8,25 @@ import logo from "../assets/Logocitamed.png";
 const Followup = () => {
   const navigate = useNavigate();
   const [reminders, setReminders] = useState([]);
+  const [headerHeight, setHeaderHeight] = useState(90); // Altura inicial del header
 
   useEffect(() => {
     fetchReminders();
+
+    // Calcular altura real del header
+    const updateHeaderHeight = () => {
+      const header = document.querySelector(".followup-header");
+      if (header) {
+        setHeaderHeight(header.offsetHeight);
+      }
+    };
+
+    updateHeaderHeight();
+    window.addEventListener("resize", updateHeaderHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateHeaderHeight);
+    };
   }, []);
 
   const fetchReminders = async () => {
@@ -20,7 +36,7 @@ const Followup = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      // Ordenar por fecha ascendente
+      // Ordenar por fecha descendente
       const sortedReminders = res.data.sort((a, b) => {
         const fechaA = new Date(a.fecha).getTime();
         const fechaB = new Date(b.fecha).getTime();
@@ -33,7 +49,6 @@ const Followup = () => {
     }
   };
 
-  // ✅ Marcar recordatorio como completado
   const handleToggleCompleted = async (id, currentState) => {
     try {
       const token = localStorage.getItem("token");
@@ -43,7 +58,6 @@ const Followup = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // Actualizamos solo ese reminder en el estado y reordenamos
       setReminders((prev) => {
         const updated = prev.map((r) =>
           r._id === id
@@ -59,21 +73,17 @@ const Followup = () => {
 
   return (
     <div className="followup-container">
-      {/* Barra superior */}
+      {/* Header fijo */}
       <header className="followup-header">
         <button className="followup-back" onClick={() => navigate("/home")}>
           <FaArrowLeft />
         </button>
-        <img
-          src={logo}
-          alt="Seguimiento y cumplimiento"
-          className="milogo-followup"
-        />
+        <img src={logo} alt="Seguimiento y cumplimiento" className="milogo-followup" />
         <h1 className="followup-title">Seguimiento a paciente</h1>
       </header>
 
-      {/* Lista de recordatorios estilo tarjeta */}
-      <main className="followup-main">
+      {/* Contenido */}
+      <main className="followup-main" style={{ marginTop: `${headerHeight}px` }}>
         {reminders.length === 0 ? (
           <p className="followup-no-data">No hay recordatorios</p>
         ) : (
@@ -85,7 +95,6 @@ const Followup = () => {
                   className={`followup-card ${reminder.completed ? "completed" : ""}`}
                 >
                   <div className="followup-left">
-                    {/* Ícono dinámico */}
                     {reminder.tipo === "medicamento" ? (
                       <FaPills className="followup-icon" />
                     ) : (
@@ -123,12 +132,11 @@ const Followup = () => {
                         </p>
                       </>
                     )}
-                    {/* ✅ Mostrar frecuencia */}
+
                     {reminder.frecuencia && (
                       <p className="followup-frequency">{reminder.frecuencia}</p>
                     )}
 
-                    {/* ✅ Mostrar fecha de completado si existe */}
                     {reminder.completed && reminder.completedAt && (
                       <p className="followup-completed">
                         ✔️ Completado el{" "}
@@ -139,9 +147,7 @@ const Followup = () => {
 
                   <div className="followup-right">
                     <p className="followup-question">
-                      {reminder.tipo === "medicamento"
-                        ? "¿Lo tomaste?"
-                        : "¿Asistió?"}
+                      {reminder.tipo === "medicamento" ? "¿Lo tomaste?" : "¿Asistió?"}
                     </p>
                     <label className="followup-switch">
                       <input

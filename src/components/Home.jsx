@@ -145,7 +145,7 @@ const Home = () => {
             onClick={() => { navigate("/profile"); setIsMenuOpen(false); }}
           >
             <span className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold">
-              {nombreUsuario ? nombreUsuario.charAt(0).toUpperCase() : "?"}
+             
             </span>
             Mi Perfil
           </button>
