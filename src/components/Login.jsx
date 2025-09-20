@@ -6,7 +6,7 @@ import "../styles/Login.css";
 import loginImage from "../assets/imagencitamed.jpg";
 import logo from "../assets/Logocitamed.png";
 
-const API_URL = "https://backend-vu6t.onrender.com/api";
+const API_URL = "https://citamedback.vercel.app/api";
 const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 function Login() {
