@@ -121,7 +121,7 @@ function Register() {
         setMessage('');
 
         try {
-            const response = await fetch('https://citamedback.vercel.app/api/register', {
+            const response = await fetch('https://backend-vu6t.onrender.com/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
