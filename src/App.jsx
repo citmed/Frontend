@@ -12,8 +12,9 @@ import ReminderMedicine from './components/ReminderMedicine';
 import ReminderFrequency from './components/ReminderFrequency';
 import ReminderCreated from './components/ReminderCreated';
 import UserProfile from "./components/userProfile";
-import ForgotPassword from "./components/ForgotPassword";   // 🔹 Nuevo
-import ResetPassword from "./components/ResetPassword";     // 🔹 Nuevo
+import ForgotPassword from "./components/ForgotPassword";   
+import ResetPassword from "./components/ResetPassword";     
+import EditReminder from './components/EditReminder';
 
 import './App.css';
 
