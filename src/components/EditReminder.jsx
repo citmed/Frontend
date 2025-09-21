@@ -5,7 +5,8 @@ import axios from "axios";
 const EditReminder = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [reminder, setReminder] = useState({
+  const [reminder, setReminder] = useState(null);
+  const [formData, setFormData] = useState({
     titulo: "",
     descripcion: "",
     fecha: "",
@@ -15,7 +16,7 @@ const EditReminder = () => {
     cantidadDisponible: ""
   });
 
-  // 🔹 Traer el recordatorio por ID
+  // 🔹 Traer recordatorio por ID
   useEffect(() => {
     const fetchReminder = async () => {
       try {
@@ -25,6 +26,19 @@ const EditReminder = () => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setReminder(res.data);
+
+        // Inicializa el formulario con lo que ya tenía el recordatorio
+        setFormData({
+          titulo: res.data.titulo || "",
+          descripcion: res.data.descripcion || "",
+          fecha: res.data.fecha
+            ? new Date(res.data.fecha).toISOString().slice(0, 16)
+            : "",
+          frecuencia: res.data.frecuencia || "",
+          dosis: res.data.dosis || "",
+          unidad: res.data.unidad || "",
+          cantidadDisponible: res.data.cantidadDisponible || ""
+        });
       } catch (error) {
         console.error("❌ Error al traer recordatorio:", error);
       }
@@ -32,90 +46,112 @@ const EditReminder = () => {
     fetchReminder();
   }, [id]);
 
-  // 🔹 Manejar cambios en inputs
+  // 🔹 Manejo de cambios
   const handleChange = (e) => {
-    setReminder({ ...reminder, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 🔹 Guardar cambios (PUT al backend)
+  // 🔹 Validación: obligar cambios en TODOS los campos
+  const isModified =
+    reminder &&
+    Object.keys(formData).every((key) => {
+      return formData[key].toString().trim() !==
+        (reminder[key] ? reminder[key].toString().trim() : "");
+    });
+
+  // 🔹 Guardar cambios
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isModified) {
+      alert("⚠️ Debes modificar todos los campos antes de guardar.");
+      return;
+    }
+
     try {
       const token = localStorage.getItem("token");
       await axios.put(
         `https://citamedback.vercel.app/api/reminders/${id}`,
-        reminder,
+        formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      navigate("/reminders"); // redirigir a lista después de editar
+      navigate("/reminder"); // redirige a lista
     } catch (error) {
       console.error("❌ Error al actualizar recordatorio:", error);
     }
   };
+
+  if (!reminder) return <p>Cargando recordatorio...</p>;
 
   return (
     <div className="form-container">
       <h2>Editar Recordatorio</h2>
       <form onSubmit={handleSubmit}>
         <label>Título</label>
-        <input 
-          type="text" 
-          name="titulo" 
-          value={reminder.titulo} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="text"
+          name="titulo"
+          value={formData.titulo}
+          onChange={handleChange}
+          required
         />
 
         <label>Descripción</label>
-        <textarea 
-          name="descripcion" 
-          value={reminder.descripcion} 
-          onChange={handleChange} 
+        <textarea
+          name="descripcion"
+          value={formData.descripcion}
+          onChange={handleChange}
+          required
         />
 
         <label>Fecha</label>
-        <input 
-          type="datetime-local" 
-          name="fecha" 
-          value={reminder.fecha ? new Date(reminder.fecha).toISOString().slice(0,16) : ""} 
-          onChange={handleChange} 
-          required 
+        <input
+          type="datetime-local"
+          name="fecha"
+          value={formData.fecha}
+          onChange={handleChange}
+          required
         />
 
         <label>Frecuencia</label>
-        <input 
-          type="text" 
-          name="frecuencia" 
-          value={reminder.frecuencia || ""} 
-          onChange={handleChange} 
+        <input
+          type="text"
+          name="frecuencia"
+          value={formData.frecuencia}
+          onChange={handleChange}
+          required
         />
 
         <label>Dosis</label>
-        <input 
-          type="number" 
-          name="dosis" 
-          value={reminder.dosis || ""} 
-          onChange={handleChange} 
+        <input
+          type="number"
+          name="dosis"
+          value={formData.dosis}
+          onChange={handleChange}
+          required
         />
 
         <label>Unidad</label>
-        <input 
-          type="text" 
-          name="unidad" 
-          value={reminder.unidad || ""} 
-          onChange={handleChange} 
+        <input
+          type="text"
+          name="unidad"
+          value={formData.unidad}
+          onChange={handleChange}
+          required
         />
 
         <label>Cantidad disponible</label>
-        <input 
-          type="number" 
-          name="cantidadDisponible" 
-          value={reminder.cantidadDisponible || ""} 
-          onChange={handleChange} 
+        <input
+          type="number"
+          name="cantidadDisponible"
+          value={formData.cantidadDisponible}
+          onChange={handleChange}
+          required
         />
 
-        <button type="submit">Guardar cambios</button>
-        <button type="button" onClick={() => navigate("/reminders")}>
+        <button type="submit" disabled={!isModified}>
+          Guardar cambios
+        </button>
+        <button type="button" onClick={() => navigate("/reminder")}>
           Cancelar
         </button>
       </form>
