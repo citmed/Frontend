@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Reminder.css";
 import { useNavigate } from "react-router-dom";
-import { 
-  FaArrowLeft, 
-  FaCalendarAlt, 
-  FaHistory, 
-  FaPlus, 
-  FaUsers, 
-  FaPills, 
-  FaTimes, 
+import {
+  FaArrowLeft,
+  FaCalendarAlt,
+  FaHistory,
+  FaPlus,
+  FaUsers,
+  FaPills,
+  FaTimes,
   FaTrash,
-  FaBars 
+  FaBars
 } from "react-icons/fa";
 import axios from "axios";
 import logo from "../assets/Logocitamed.png";
@@ -78,21 +78,21 @@ const Reminder = () => {
         <button className="nav-button" onClick={() => navigate("/home")}>
           <FaArrowLeft />
         </button>
-        
+
         {/* Logo con contenedor específico */}
         <div className="logo-container">
           <img src={logo} alt="CitaMed Seguimiento y cumplimiento" className="milogo" />
         </div>
-        
+
         <h1>RECORDATORIOS</h1>
-        
+
         {/* Botón de menú hamburguesa para móviles - POSICIONADO ARRIBA A LA DERECHA */}
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
           <FaBars />
         </button>
-        
+
         <div className={`nav-buttons-group ${showMobileMenu ? 'mobile-menu-open' : ''}`}>
-          <button className="nav-button" onClick={() => {navigate("/home"); setShowMobileMenu(false);}}>
+          <button className="nav-button" onClick={() => { navigate("/home"); setShowMobileMenu(false); }}>
             <FaCalendarAlt /> <span className="nav-button-text">Calendario</span>
           </button>
           <button className="nav-button active" onClick={() => setShowMobileMenu(false)}>
@@ -150,6 +150,13 @@ const Reminder = () => {
                 <button className="delete-button" onClick={() => eliminarRecordatorio(reminder._id)}>
                   <FaTrash />
                 </button>
+                <button
+                  className="edit-button"
+                  onClick={() => navigate(`/edit-reminder/${reminder._id}`)}
+                >
+                  ✏️
+                </button>
+
               </li>
             ))}
           </ul>
@@ -162,7 +169,7 @@ const Reminder = () => {
             <button className="fab-option" onClick={irARecordatorio}>
               <FaUsers /> Recordatorio de control
             </button>
-            <button className="fab-option" onClick={() => {navigate("/reminder-medicine"); setShowMobileMenu(false);}}>
+            <button className="fab-option" onClick={() => { navigate("/reminder-medicine"); setShowMobileMenu(false); }}>
               <FaPills /> Recordatorio de medicamentos
             </button>
           </div>

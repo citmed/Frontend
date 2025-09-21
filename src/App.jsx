@@ -61,6 +61,7 @@ function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route path="/edit-reminder/:id" element={<EditReminder />} />
 
           {/* Redirección lógica del dashboard */}
           <Route
