@@ -74,7 +74,7 @@ const EditReminder = () => {
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      navigate("/reminder"); // redirige a lista
+      navigate("/reminder"); // ✅ Redirige a lista de recordatorios
     } catch (error) {
       console.error("❌ Error al actualizar recordatorio:", error);
     }
@@ -84,7 +84,7 @@ const EditReminder = () => {
 
   return (
     <div className="form-container">
-      <h2>Editar Recordatorio</h2>
+      <h2>✏️ Editar Recordatorio</h2>
       <form onSubmit={handleSubmit}>
         <label>Título</label>
         <input
@@ -148,12 +148,22 @@ const EditReminder = () => {
           required
         />
 
-        <button type="submit" disabled={!isModified}>
-          Guardar cambios
-        </button>
-        <button type="button" onClick={() => navigate("/reminder")}>
-          Cancelar
-        </button>
+        <div className="button-group">
+          <button
+            type="submit"
+            className="btn-save"
+            disabled={!isModified}
+          >
+            💾 Guardar cambios
+          </button>
+          <button
+            type="button"
+            className="btn-cancel"
+            onClick={() => navigate("/reminder")}
+          >
+            ❌ Cancelar
+          </button>
+        </div>
       </form>
     </div>
   );
