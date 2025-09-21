@@ -53,11 +53,13 @@ const EditReminder = () => {
 
   // 🔹 Validación: obligar cambios en TODOS los campos
   const isModified =
-    reminder &&
-    Object.keys(formData).every((key) => {
-      return formData[key].toString().trim() !==
-        (reminder[key] ? reminder[key].toString().trim() : "");
-    });
+  reminder &&
+  Object.keys(formData).every((key) => formData[key].toString().trim() !== "") &&
+  Object.keys(formData).some((key) => {
+    return formData[key].toString().trim() !==
+      (reminder[key] ? reminder[key].toString().trim() : "");
+  });
+
 
   // 🔹 Guardar cambios
   const handleSubmit = async (e) => {
@@ -159,7 +161,7 @@ const EditReminder = () => {
           <button
             type="button"
             className="btn-cancel"
-            onClick={() => navigate("/reminder")}
+            onClick={() => navigate("/reminders")}
           >
             ❌ Cancelar
           </button>
