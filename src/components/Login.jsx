@@ -177,8 +177,8 @@ function Login() {
             <a href="/forgot-password">Recupérala aquí</a>
           </p>
           <p>
-          ¿Olvidaste tu usuario?{" "}
-          <a href="/recover-username">Recupéralo aquí</a>
+            ¿Olvidaste tu usuario?{" "}
+            <a href="/recover-username">Recupéralo aquí</a>
           </p>
           <p>
             ¿Aún no estás registrado? <a href="/register">Registrarse</a>
