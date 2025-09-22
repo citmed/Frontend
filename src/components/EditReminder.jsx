@@ -19,6 +19,14 @@ const EditReminder = () => {
         tipo: "" // control | medicamento
     });
 
+
+    // 🔹 Corrige el desfase horario (UTC → Local)
+    const formatDateForInput = (dateString) => {
+        const d = new Date(dateString);
+        const tzOffset = d.getTimezoneOffset() * 60000;
+        return new Date(d - tzOffset).toISOString().slice(0, 16);
+    };
+
     // 🔹 Traer recordatorio por ID
     useEffect(() => {
         const fetchReminder = async () => {
@@ -34,15 +42,13 @@ const EditReminder = () => {
                 setFormData({
                     titulo: res.data.titulo || "",
                     descripcion: res.data.descripcion || "",
-                    fecha: res.data.fecha
-                        ? new Date(res.data.fecha).toLocaleString("sv-SE", { timeZone: "America/Bogota" }).slice(0, 16)
-                        : "",
-
+                    fecha: res.data.fecha ? formatDateForInput(res.data.fecha) : "",
                     dosis: res.data.dosis || "",
                     unidad: res.data.unidad || "",
                     cantidadDisponible: res.data.cantidadDisponible || "",
                     tipo: res.data.tipo || "control",
                 });
+
 
             } catch (error) {
                 console.error("❌ Error al traer recordatorio:", error);
@@ -104,9 +110,13 @@ const EditReminder = () => {
             const token = localStorage.getItem("token");
             await axios.put(
                 `https://citamedback.vercel.app/api/reminders/${id}`,
-                formData,
+                {
+                    ...formData,
+                    fecha: new Date(formData.fecha).toISOString(), // 👈 Convierte a UTC antes de enviar
+                },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
+
             navigate("/reminder"); // ✅ Redirige a lista de recordatorios
         } catch (error) {
             console.error("❌ Error al actualizar recordatorio:", error);
