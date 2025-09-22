@@ -114,7 +114,7 @@ function Register() {
             return false;
         }
         if (formData.password !== formData.confirmPassword) {
-            setMessage('❌ Las contraseñas no coinciden');
+            setMessage('Las contraseñas no coinciden');
             return false;
         }
         return true;
@@ -122,39 +122,30 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Verificación rápida antes de validar todo
-        if (formData.password !== formData.confirmPassword) {
-            setMessage("❌ Las contraseñas no coinciden");
-            return;
-        }
-
+        
         if (!validateForm()) return;
 
         setIsLoading(true);
         setMessage('');
 
         try {
-            // eliminamos confirmPassword antes de enviar
-            const { confirmPassword, ...dataToSend } = formData;
-
             const response = await fetch('https://citamedback.vercel.app/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dataToSend),
+                body: JSON.stringify(formData),
             });
 
             const data = await response.json();
 
             if (response.ok) {
-                setMessage('✅ ¡Registro exitoso! Redirigiendo a inicio de sesión...');
+                setMessage('¡Registro exitoso! Redirigiendo a inicio de sesión...');
                 setTimeout(() => navigate('/login'), 2000);
             } else {
-                setMessage(data.msg || '❌ Error en el registro. Intenta nuevamente.');
+                setMessage(data.msg || 'Error en el registro. Intenta nuevamente.');
             }
         } catch (err) {
             console.error('Error:', err);
-            setMessage('❌ Error en la conexión con el servidor. Verifica tu conexión.');
+            setMessage('Error en la conexión con el servidor. Verifica tu conexión.');
         } finally {
             setIsLoading(false);
         }
@@ -180,8 +171,84 @@ function Register() {
                 )}
     
                 <form onSubmit={handleSubmit} className="register-form">
-                    {/* resto del formulario igual */}
-                    {/* ... tus inputs de nombre, apellido, etc. */}
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="name">Nombres *</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Ingresa tu nombre"
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="lastName">Apellidos *</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                value={formData.lastName}
+                                onChange={handleChange}
+                                placeholder="Ingresa tu apellido"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="birthdate">Fecha de Nacimiento *</label>
+                            <input
+                                type="date"
+                                id="birthdate"
+                                name="birthdate"
+                                value={formData.birthdate}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="phone">Teléfono *</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder="Ingresa tu teléfono"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="email">Correo Electrónico *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="ejemplo@correo.com"
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="username">Nombre de Usuario *</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={formData.username}
+                            onChange={handleChange}
+                            placeholder="Elige un nombre de usuario"
+                            required
+                        />
+                    </div>
 
                     {/* Contraseña */}
                     <div className="form-group password-group">
