@@ -154,7 +154,7 @@ const Reminder = () => {
                   className="edit-button"
                   onClick={() => navigate(`/edit-reminder/${reminder._id}`)}
                 >
-                  ✏️
+                  Editar
                 </button>
 
               </li>
