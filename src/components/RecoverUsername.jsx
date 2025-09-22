@@ -16,7 +16,7 @@ function RecoverUsername() {
     setMessage("");
 
     try {
-      const res = await fetch(`${API_URL}/recover-username`, { // 👈 ojo al guion, debe coincidir con tu ruta
+      const res = await fetch(`${API_URL}/recoverusername`, { // 👈 ojo al guion, debe coincidir con tu ruta
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
