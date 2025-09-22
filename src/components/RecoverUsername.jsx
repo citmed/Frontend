@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/RecoverUsername.css";
 
-const API_URL = "https://citamedback.vercel.app/api";
+const API_URL = "https://citamedback.vercel.app/api/auth";
 
 function RecoverUsername() {
   const [email, setEmail] = useState("");
