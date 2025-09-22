@@ -21,6 +21,9 @@ function Register() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
+    // ⚡ Nuevo estado para mostrar si las contraseñas no coinciden
+    const [confirmError, setConfirmError] = useState('');
+
     useEffect(() => {
         document.body.classList.add('register-background');
         return () => {
@@ -34,6 +37,7 @@ function Register() {
             [e.target.name]: e.target.value
         });
         if (message) setMessage('');
+        if (confirmError) setConfirmError('');
     };
 
     // --- Indicador de seguridad ---
@@ -113,26 +117,31 @@ function Register() {
             setMessage('La contraseña debe contener al menos un carácter especial');
             return false;
         }
-        if (formData.password !== formData.confirmPassword) {
-            setMessage('Las contraseñas no coinciden');
-            return false;
-        }
         return true;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
+        // 🔎 Validar que las contraseñas coincidan
+        if (formData.password !== formData.confirmPassword) {
+            setConfirmError('❌ Las contraseñas no coinciden');
+            return;
+        }
+
         if (!validateForm()) return;
 
         setIsLoading(true);
         setMessage('');
 
         try {
+            // enviamos solo la contraseña principal (no el confirmPassword)
+            const { confirmPassword, ...dataToSend } = formData;
+
             const response = await fetch('https://citamedback.vercel.app/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(dataToSend),
             });
 
             const data = await response.json();
@@ -309,6 +318,8 @@ function Register() {
                                 {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                             </span>
                         </div>
+                        {/* 🚨 Mensaje de error si no coinciden */}
+                        {confirmError && <p className="error-text">{confirmError}</p>}
                     </div>
 
                     <button 
