@@ -15,6 +15,7 @@ import UserProfile from "./components/userProfile";
 import ForgotPassword from "./components/ForgotPassword";   
 import ResetPassword from "./components/ResetPassword";     
 import EditReminder from './components/EditReminder';
+import RecoverUsername from './components/RecoverUsername';
 
 import './App.css';
 
@@ -63,6 +64,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="/edit-reminder/:id" element={<EditReminder />} />
+          <Route path="/recover-username" element={<RecoverUsername />} />
 
           {/* Redirección lógica del dashboard */}
           <Route
