@@ -279,19 +279,20 @@
 
 /* Boton de editar */
 .edit-button {
-  background-color: #007bff; /* Azul */
+  align-self: flex-end;
+  margin: 12px;
+  background: #4274fd;
   border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
   color: white;
-  font-size: 16px;
-  margin-left: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .edit-button:hover {
-  background-color: #0056b3;
+  background: #e85a5a;
+  transform: scale(1.1);
 }
 
 
