@@ -37,6 +37,7 @@ const EditReminder = () => {
                 });
 
 
+
                 dosis: res.data.dosis || "",
                     unidad: res.data.unidad || "",
                         cantidadDisponible: res.data.cantidadDisponible || "",
