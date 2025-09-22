@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa";
 import logo from "../assets/Logocitamed.png";
-import "../styles/EditReminder.css";
+
 
 const EditReminder = () => {
   const { id } = useParams();
