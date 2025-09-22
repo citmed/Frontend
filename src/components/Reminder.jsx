@@ -10,7 +10,8 @@ import {
   FaPills,
   FaTimes,
   FaTrash,
-  FaBars
+  FaBars,
+  FaEdit
 } from "react-icons/fa";
 import axios from "axios";
 import logo from "../assets/Logocitamed.png";
@@ -150,13 +151,12 @@ const Reminder = () => {
                 <button className="delete-button" onClick={() => eliminarRecordatorio(reminder._id)}>
                   <FaTrash />
                 </button>
-                <button
-                  className="edit-button"
+                <button 
+                  className="edit-button" 
                   onClick={() => navigate(`/edit-reminder/${reminder._id}`)}
                 >
-                  Editar
+                  <FaEdit />
                 </button>
-
               </li>
             ))}
           </ul>
