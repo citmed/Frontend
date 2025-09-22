@@ -35,8 +35,9 @@ const EditReminder = () => {
                     titulo: res.data.titulo || "",
                     descripcion: res.data.descripcion || "",
                     fecha: res.data.fecha
-                        ? new Date(res.data.fecha).toISOString().slice(0, 16)
+                        ? new Date(res.data.fecha).toLocaleString("sv-SE", { timeZone: "America/Bogota" }).slice(0, 16)
                         : "",
+
                     dosis: res.data.dosis || "",
                     unidad: res.data.unidad || "",
                     cantidadDisponible: res.data.cantidadDisponible || "",
