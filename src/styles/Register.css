@@ -121,6 +121,32 @@ html, body {
   color: #1f2937;
 }
 
+/* Ojito */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el ícono */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+  color: #000;
+}
+
+
 .submit-button {
   background: #667eea;
   color: #ffffff;
