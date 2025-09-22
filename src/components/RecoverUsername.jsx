@@ -16,7 +16,7 @@ function RecoverUsername() {
     setMessage("");
 
     try {
-      const res = await fetch(`${API_URL}/recoverusername`, {
+      const res = await fetch(`${API_URL}/recover-username`, { // 👈 ojo al guion, debe coincidir con tu ruta
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -25,7 +25,8 @@ function RecoverUsername() {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage(`✅ Tu usuario es: ${data.username}`);
+        // Ahora solo mostramos un mensaje general, no el username
+        setMessage(data.msg || "✅ Se ha enviado tu usuario al correo.");
       } else {
         setError(data.msg || "Error al recuperar usuario");
       }
@@ -57,7 +58,8 @@ function RecoverUsername() {
       {error && <p className="error-message">{error}</p>}
 
       <p>
-        ¿Ya recordaste tu usuario? <a onClick={() => navigate("/login")}>Inicia sesión aquí</a>
+        ¿Ya recordaste tu usuario?{" "}
+        <a onClick={() => navigate("/login")}>Inicia sesión aquí</a>
       </p>
     </div>
   );
