@@ -127,7 +127,7 @@ const EditReminder = () => {
       </nav>
 
       <div className="form-container">
-        <h2>✏️ Editar Recordatorio ({formData.tipo})</h2>
+        <h2> Editar Recordatorio ({formData.tipo})</h2>
         <form onSubmit={handleSubmit}>
           <label>Título</label>
           <input
