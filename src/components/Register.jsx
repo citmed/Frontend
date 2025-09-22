@@ -21,9 +21,6 @@ function Register() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-    // ⚡ Nuevo estado solo para el error de confirmación
-    const [confirmError, setConfirmError] = useState('');
-
     useEffect(() => {
         document.body.classList.add('register-background');
         return () => {
@@ -37,7 +34,6 @@ function Register() {
             [e.target.name]: e.target.value
         });
         if (message) setMessage('');
-        if (confirmError) setConfirmError('');
     };
 
     // --- Indicador de seguridad ---
@@ -117,31 +113,26 @@ function Register() {
             setMessage('La contraseña debe contener al menos un carácter especial');
             return false;
         }
+        if (formData.password !== formData.confirmPassword) {
+            setMessage('Las contraseñas no coinciden');
+            return false;
+        }
         return true;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // 🔎 Validación extra de confirmación de contraseña
-        if (formData.password !== formData.confirmPassword) {
-            setConfirmError('❌ Las contraseñas no coinciden');
-            return;
-        }
-
+        
         if (!validateForm()) return;
 
         setIsLoading(true);
         setMessage('');
 
         try {
-            // enviamos solo la contraseña principal
-            const { confirmPassword, ...dataToSend } = formData;
-
             const response = await fetch('https://citamedback.vercel.app/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dataToSend),
+                body: JSON.stringify(formData),
             });
 
             const data = await response.json();
@@ -180,7 +171,84 @@ function Register() {
                 )}
     
                 <form onSubmit={handleSubmit} className="register-form">
-                    {/* ...todo tu código igual... */}
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="name">Nombres *</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Ingresa tu nombre"
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="lastName">Apellidos *</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                value={formData.lastName}
+                                onChange={handleChange}
+                                placeholder="Ingresa tu apellido"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="birthdate">Fecha de Nacimiento *</label>
+                            <input
+                                type="date"
+                                id="birthdate"
+                                name="birthdate"
+                                value={formData.birthdate}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="phone">Teléfono *</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder="Ingresa tu teléfono"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="email">Correo Electrónico *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="ejemplo@correo.com"
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="username">Nombre de Usuario *</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={formData.username}
+                            onChange={handleChange}
+                            placeholder="Elige un nombre de usuario"
+                            required
+                        />
+                    </div>
 
                     {/* Contraseña */}
                     <div className="form-group password-group">
@@ -241,8 +309,6 @@ function Register() {
                                 {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                             </span>
                         </div>
-                        {/* 🚨 Mensaje de error de confirmación */}
-                        {confirmError && <p className="error-text">{confirmError}</p>}
                     </div>
 
                     <button 
