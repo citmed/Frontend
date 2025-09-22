@@ -144,7 +144,7 @@ const Reminder = () => {
                   {reminder.dosis && reminder.unidad && (
                     <small><b>Dosis:</b> {reminder.dosis} {reminder.unidad}</small>
                   )}
-                  {reminder.cantidadDisponible !== undefined && (
+                  {reminder.cantidadDisponible !== "medicamento" && (
                     <small><b>Cantidad disponible:</b> {reminder.cantidadDisponible}</small>
                   )}
                 </div>
