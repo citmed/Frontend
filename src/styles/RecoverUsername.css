@@ -1,0 +1,100 @@
+/* Fondo general */
+.recover-username-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Título */
+.recover-username-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+}
+
+/* Inputs */
+.input-group {
+  text-align: left;
+  margin-bottom: 1.2rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Botón */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button[type="submit"]:hover {
+  background: #2980b9;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Mensajes */
+.success-message {
+  color: #27ae60;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* Enlace */
+.recover-username-container p {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.recover-username-container a {
+  color: #3498db;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.recover-username-container a:hover {
+  text-decoration: underline;
+}
