@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Followup.css";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaPills, FaUserMd, FaStar } from "react-icons/fa";
+import { FaArrowLeft, FaPills, FaUserMd } from "react-icons/fa";
 import axios from "axios";
 import logo from "../assets/Logocitamed.png";
 
@@ -29,7 +29,6 @@ const Followup = () => {
     };
   }, []);
 
-  // 📌 Obtener recordatorios
   const fetchReminders = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -37,11 +36,11 @@ const Followup = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      // Ordenar: favoritos primero ⭐ y luego por fecha descendente
+      // Ordenar por fecha descendente
       const sortedReminders = res.data.sort((a, b) => {
-        if (a.favorito && !b.favorito) return -1;
-        if (!a.favorito && b.favorito) return 1;
-        return new Date(b.fecha) - new Date(a.fecha);
+        const fechaA = new Date(a.fecha).getTime();
+        const fechaB = new Date(b.fecha).getTime();
+        return fechaB - fechaA;
       });
 
       setReminders(sortedReminders);
@@ -50,7 +49,6 @@ const Followup = () => {
     }
   };
 
-  // 📌 Marcar completado
   const handleToggleCompleted = async (id, currentState) => {
     try {
       const token = localStorage.getItem("token");
@@ -60,41 +58,16 @@ const Followup = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      setReminders((prev) =>
-        prev.map((r) =>
+      setReminders((prev) => {
+        const updated = prev.map((r) =>
           r._id === id
             ? { ...r, completed: res.data.completed, completedAt: res.data.completedAt }
             : r
-        )
-      );
-    } catch (error) {
-      console.error("❌ Error al marcar completado:", error);
-    }
-  };
-
-  // 📌 Marcar o desmarcar favorito ⭐
-  const handleToggleFavorite = async (id, currentFav) => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await axios.put(
-         `https://citamedback.vercel.app/api/reminders/${id}/favorite`,
-        { favorito: !currentFav },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
-      setReminders((prev) => {
-        const updated = prev.map((r) =>
-          r._id === id ? { ...r, favorito: res.data.favorito } : r
         );
-        // Reordenar para que favoritos queden arriba
-        return updated.sort((a, b) => {
-          if (a.favorito && !b.favorito) return -1;
-          if (!a.favorito && b.favorito) return 1;
-          return new Date(b.fecha) - new Date(a.fecha);
-        });
+        return updated.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
       });
     } catch (error) {
-      console.error("❌ Error al actualizar favorito:", error);
+      console.error("❌ Error al marcar completado:", error);
     }
   };
 
@@ -130,18 +103,7 @@ const Followup = () => {
                   </div>
 
                   <div className="followup-info">
-                    <div className="followup-header-row">
-                      <h3 className="followup-reminder-title">{reminder.titulo}</h3>
-                      <button
-                        className="favorite-btn"
-                        onClick={() => handleToggleFavorite(reminder._id, reminder.favorito)}
-                      >
-                        <FaStar
-                          className={`star-icon ${reminder.favorito ? "active" : ""}`}
-                        />
-                      </button>
-                    </div>
-
+                    <h3 className="followup-reminder-title">{reminder.titulo}</h3>
                     <p className="followup-description">{reminder.descripcion}</p>
 
                     {reminder.cantidadDisponible !== undefined && (
