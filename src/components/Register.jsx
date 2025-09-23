@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import '../styles/Register.css';
 
 function Register() {
@@ -10,12 +11,18 @@ function Register() {
         phone: '',
         email: '',
         username: '',
-        password: ''
+        password: '',
+        confirmPassword:''
     });
 
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
+    // ⚡ Nuevo estado para mostrar si las contraseñas no coinciden
+    const [confirmError, setConfirmError] = useState('');
 
     useEffect(() => {
         document.body.classList.add('register-background');
@@ -30,6 +37,7 @@ function Register() {
             [e.target.name]: e.target.value
         });
         if (message) setMessage('');
+        if (confirmError) setConfirmError('');
     };
 
     // --- Indicador de seguridad ---
@@ -50,16 +58,16 @@ function Register() {
             return false;
         }
         if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(formData.name)) {
-        setMessage('El nombre solo puede contener letras y espacios');
-        return false;
+            setMessage('El nombre solo puede contener letras y espacios');
+            return false;
         }
         if (!formData.lastName.trim()) {
             setMessage('Por favor, ingresa tu apellido');
             return false;
         }
         if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(formData.lastName)) {
-        setMessage('El apellido solo puede contener letras y espacios');
-        return false;
+            setMessage('El apellido solo puede contener letras y espacios');
+            return false;
         }
         if (!formData.birthdate.trim()) {
             setMessage('Por favor, selecciona tu fecha de nacimiento');
@@ -114,17 +122,26 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
+        // 🔎 Validar que las contraseñas coincidan
+        if (formData.password !== formData.confirmPassword) {
+            setConfirmError('❌ Las contraseñas no coinciden');
+            return;
+        }
+
         if (!validateForm()) return;
 
         setIsLoading(true);
         setMessage('');
 
         try {
+            // enviamos solo la contraseña principal (no el confirmPassword)
+            const { confirmPassword, ...dataToSend } = formData;
+
             const response = await fetch('https://citamedback.vercel.app/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(dataToSend),
             });
 
             const data = await response.json();
@@ -242,17 +259,27 @@ function Register() {
                         />
                     </div>
 
-                    <div className="form-group">
+                    {/* Contraseña */}
+                    <div className="form-group password-group">
                         <label htmlFor="password">Contraseña *</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            placeholder="Mínimo 8 caracteres, mayúscula, minúscula, número y símbolo"
-                            required
-                        />
+                        <div className="password-wrapper">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                placeholder="Mínimo 8 caracteres, mayúscula, minúscula, número y símbolo"
+                                required
+                            />
+                            <span 
+                                className="toggle-password" 
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </span>
+                        </div>
+
                         {/* Indicador de seguridad */}
                         <div className="password-strength">
                             <div className={`strength-bar ${strength >= 1 ? 'active' : ''}`} />
@@ -269,6 +296,30 @@ function Register() {
                             {strength === 4 && "Fuerte"}
                             {strength === 5 && "Muy fuerte"}
                         </p>
+                    </div>
+
+                    {/* Confirmar contraseña */}
+                    <div className="form-group password-group">
+                        <label htmlFor="confirmPassword">Confirmar Contraseña *</label>
+                        <div className="password-wrapper">
+                            <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                value={formData.confirmPassword}
+                                onChange={handleChange}
+                                placeholder="Repite tu contraseña"
+                                required
+                            />
+                            <span 
+                                className="toggle-password" 
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            >
+                                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                            </span>
+                        </div>
+                        {/* 🚨 Mensaje de error si no coinciden */}
+                        {confirmError && <p className="error-text">{confirmError}</p>}
                     </div>
 
                     <button 

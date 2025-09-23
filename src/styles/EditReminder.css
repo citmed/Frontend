@@ -125,3 +125,112 @@
 .edit-reminder-cancel-btn:hover {
   background-color: #5a6268;
 }
+
+ /* ====== CONTENEDOR FORMULARIO ====== */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* ====== CAMPOS DEL FORMULARIO ====== */
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    background-color: #fff;
+    border: 1px solid #8d8d8d;
+    color: black;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+  }
+  
+  textarea {
+    resize: none;
+    min-height: 80px;
+  }
+  
+  /* ====== BOTONES ====== */
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  .btn-save {
+    flex: 1;
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-save:hover:not(:disabled) {
+    background: #218838;
+  }
+  
+  .btn-save:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .btn-cancel {
+    flex: 1;
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-cancel:hover {
+    background: #b02a37;
+  }
+  
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 600px) {
+    .form-container {
+      margin: 20px;
+      padding: 20px;
+    }
+  
+    .button-group {
+      flex-direction: row;
+    }
+  }

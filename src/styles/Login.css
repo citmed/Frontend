@@ -172,6 +172,7 @@ html, body {
   
   .login-container {
     order: 1;
+    padding-top: 165px;
   }
   
   .login-image {

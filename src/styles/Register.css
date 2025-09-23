@@ -12,8 +12,9 @@ html, body {
   align-items: center;
   min-height: 100vh;
   padding: 20px;
-  background: #f8fafc;
+  background: white;
   position: relative;
+  padding-top: 300px;
 }
 
 .register-container {
@@ -121,6 +122,39 @@ html, body {
   color: #1f2937;
 }
 
+/* Ojito */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el ícono */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+  color: #000;
+}
+
+/* Mensaje de error para confirmación */
+.error-text {
+  color: #dc2626;
+  font-size: 0.85em;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
 .submit-button {
   background: #667eea;
   color: #ffffff;
@@ -203,7 +237,7 @@ html, body {
   .register-page {
     padding: 16px;
     align-items: flex-start;
-    padding-top: 70px;
+    padding-top: 390px;
   }
   
   .register-container {

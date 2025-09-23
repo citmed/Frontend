@@ -13,7 +13,7 @@ const Home = () => {
   const [reminders, setReminders] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [nombreUsuario, setNombreUsuario] = useState(""); 
+  const [nombreUsuario, setNombreUsuario] = useState("");
   const navigate = useNavigate();
 
   // Redirige al login si no hay token
@@ -108,10 +108,10 @@ const Home = () => {
     <div className="max-w-4xl mx-auto p-6">
       {/* Encabezado */}
       <header className="main-header">
-        <img 
-          src={logo} 
-          alt="Seguimiento y cumplimiento" 
-          className="milogo" 
+        <img
+          src={logo}
+          alt="Seguimiento y cumplimiento"
+          className="milogo"
         />
         <h1 className="control"></h1>
 
@@ -123,7 +123,7 @@ const Home = () => {
 
         {!isMobile && (
           <div className="button-group desktop-buttons">
-            <button 
+            <button
               className="button-profile flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white font-bold"
               onClick={() => navigate("/profile")}
             >
@@ -141,17 +141,17 @@ const Home = () => {
       {/* Menú móvil */}
       {isMobile && (
         <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
-          <button 
+          <button
             className="mobile-menu-btn flex items-center gap-2"
             onClick={() => { navigate("/profile"); setIsMenuOpen(false); }}
           >
             <span className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold">
-             
+
             </span>
             Mi Perfil
           </button>
-          <button 
-            className="mobile-menu-btn" 
+          <button
+            className="mobile-menu-btn"
             onClick={() => { handleLogout(); setIsMenuOpen(false); }}
           >
             Cerrar Sesión
@@ -191,8 +191,13 @@ const Home = () => {
                   </span>
                 </div>
                 <span className="text-sm font-semibold text-gray-800">
-                  ⏰{Array.isArray(rem.horarios) ? rem.horarios.join(", ") : "—"}
+                  ⏰ {rem.fecha
+                    ? new Date(rem.fecha).toLocaleDateString() +
+                    " " +
+                    new Date(rem.fecha).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true })
+                    : "—"}
                 </span>
+
               </li>
             ))}
           </ul>
