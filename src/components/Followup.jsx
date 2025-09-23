@@ -77,7 +77,7 @@ const Followup = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-         `https://citamedback.vercel.app/api/auth/reminders/${id}/favorito`,
+         `https://citamedback.vercel.app/api/reminders/${id}/favorite`,
         { favorito: !currentFav },
         { headers: { Authorization: `Bearer ${token}` } }
       );
