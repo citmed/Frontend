@@ -16,6 +16,7 @@ import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";     
 import EditReminder from './components/EditReminder';
 import RecoverUsername from './components/RecoverUsername';
+import AutoLogout from "./components/AutoLogout";
 
 import './App.css';
 
@@ -52,9 +53,16 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
 };
 
 function App() {
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // 🔑 Elimina el token
+  };
+
   return (
     <Router>
       <div className="App">
+        {/* ⏱️ Auto cierre de sesión tras 2 minutos de inactividad */}
+        <AutoLogout onLogout={handleLogout} />
+
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
