@@ -36,7 +36,7 @@ const Reminder = () => {
   const fetchReminders = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("https://citamedfront.vercel.app/api/reminders", {
+      const res = await axios.get("https://citamedback.vercel.app//api/reminders", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -55,7 +55,7 @@ const Reminder = () => {
   const eliminarRecordatorio = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`https://citamedfront.vercel.app/api/reminders/${id}`, {
+      await axios.delete(`https://citamedback.vercel.app//api/reminders/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

@@ -138,7 +138,7 @@ function Register() {
             // enviamos solo la contraseña principal (no el confirmPassword)
             const { confirmPassword, ...dataToSend } = formData;
 
-            const response = await fetch('https://citamedfront.vercel.app/api/register', {
+            const response = await fetch('https://citamedback.vercel.app//api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dataToSend),
