@@ -34,7 +34,7 @@ const Followup = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get(
-        "https://citamedback.vercel.app//api/reminders",
+        "https://citamedback.vercel.app/api/reminders",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -57,7 +57,7 @@ const Followup = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `https://citamedback.vercel.app//api/reminders/${id}/completed`,
+        `https://citamedback.vercel.app/api/reminders/${id}/completed`,
         { completed: !currentState },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -86,7 +86,7 @@ const Followup = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        `https://citamedback.vercel.app//api/reminders/${id}/favorite`,
+        `https://citamedback.vercel.app/api/reminders/${id}/favorite`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

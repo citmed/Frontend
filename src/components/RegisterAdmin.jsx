@@ -11,7 +11,7 @@ const RegisterAdmin = () => {
         e.preventDefault();
         
         try {
-            const response = await fetch('https://citamedback.vercel.app//api/admin/register-admin', {
+            const response = await fetch('https://citamedback.vercel.app/api/admin/register-admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
