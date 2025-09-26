@@ -25,6 +25,7 @@ body {
   padding: 15px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between; /* ✅ distribuye: back/logo/título a la izquierda y botón a la derecha */
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   height: 80px;
@@ -175,6 +176,63 @@ body {
   margin-top: 8px;
 }
 
+
+/* 📌 Contenedor del botón dentro del header */
+.followup-filter {
+  position: relative; /* ✅ antes estaba absolute */
+  display: flex;
+  align-items: center;
+  margin-left: auto;  /* ✅ lo empuja a la derecha */
+}
+
+/* Botón de favoritos en el header */
+.btn-favorites {
+  background: none;
+  border: 2px solid #5a67d8;
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-favorites:hover {
+  background: #5a67d8;
+  transform: scale(1.05);
+}
+
+.btn-favorites.active {
+  background: #5a67d8;
+  transform: scale(0.95);
+  color: white;
+}
+/* Botón de estrella base */
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem; /* tamaño del ícono */
+  color: #bbb;       /* gris cuando no es favorita */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover */
+.favorite-btn:hover {
+  background-color: #5a67d8a1;
+  color: #f6c000; /* amarillo en hover */
+  transform: scale(1.1);
+}
+
+/* Activo (favorito marcado) */
+.favorite-btn.active {
+  color: #f6c000; /* amarillo sólido */
+}
+
+
 /* Controles */
 .followup-right {
   display: flex;
@@ -252,6 +310,41 @@ body {
   width: 100%;
 }
 
+/* ============================= */
+/* RESPONSIVE FAVORITOS */
+/* ============================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .followup-filter {
+    right: 12px;
+  }
+  .btn-favorites {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 576px) {
+  .followup-filter {
+    right: 8px;
+  }
+  .btn-favorites {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 380px) {
+  .btn-favorites {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+}
+
 /* 📌 Responsive */
 @media (max-width: 1200px) {
   .followup-card { min-width: 260px; }
@@ -280,7 +373,7 @@ body {
 
 @media (max-width: 576px) {
   .followup-header { padding: 10px 12px; height: 65px; }
-  .followup-title { font-size: 1.1rem; }
+  .followup-title { font-size: 1.1rem; margin-right: 20px; }
   .milogo-followup { height: 135px; margin-right: 10px; }
   .followup-back { font-size: 1.3rem; margin-right: 10px; }
   .followup-main { padding: 10px; min-height: calc(100vh - 65px); }

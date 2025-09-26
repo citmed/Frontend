@@ -449,6 +449,15 @@ img {
   transition: right 0.3s ease;
 }
 
+.calendar-dot {
+  display: block;
+  text-align: center;
+  color: red;   /* 🔴 el color del punto (puedes cambiarlo) */
+  font-size: 1.2rem;
+  line-height: 10px;
+  margin-top: 2px;
+}
+
 .mobile-menu-open {
   right: 0;
 }

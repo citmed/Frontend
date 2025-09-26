@@ -1,2 +1,2 @@
-VITE_API_URL=https://citamedback.vercel.app/api
+VITE_API_URL=https://citamedfront.vercel.app/api
 VITE_RECAPTCHA_SITE_KEY=6LeW0LErAAAAAIKalgvz2LKBAHMue_GpxaFF8LpS

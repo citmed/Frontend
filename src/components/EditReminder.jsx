@@ -33,7 +33,7 @@ const EditReminder = () => {
             try {
                 const token = localStorage.getItem("token");
                 const res = await axios.get(
-                    `https://citamedback.vercel.app/api/reminders/${id}`,
+                    `https://citamedfront.vercel.app/api/reminders/${id}`,
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 setReminder(res.data);
@@ -109,7 +109,7 @@ const EditReminder = () => {
         try {
             const token = localStorage.getItem("token");
             await axios.put(
-                `https://citamedback.vercel.app/api/reminders/${id}`,
+                `https://citamedfront.vercel.app/api/reminders/${id}`,
                 {
                     ...formData,
                     fecha: new Date(formData.fecha).toISOString(), // 👈 Convierte a UTC antes de enviar
